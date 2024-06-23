@@ -1,6 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&family=Raleway:wght@400;700&display=swap');
+
+body {
+    font-family: 'Nunito', sans-serif;
+}
+h1, h2, h3, .button, .special-text {
+    font-family: 'Raleway', sans-serif;
+}
+
 
 :root {
   --foreground-rgb: 0, 0, 0;

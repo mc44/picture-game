@@ -13,8 +13,12 @@ const PlayArea = () => {
   const [highScore,setHighScore] = useState(0);
   const [images, setImages] = useState<ImageData[]>([]);
   const [selected, setSelected] = useState<number[]>([]);
+  const [seconds, setSeconds] = useState<number>(0);
 
   useEffect(() => {
+    const interval = setInterval(() => {
+      setSeconds(prevSeconds => prevSeconds + 1);
+    }, 1000);
     const importAll = (r: any) => {
       return r.keys().map((key: string, index: number) => ({
         picture: key.replace('./', ''),
@@ -25,6 +29,7 @@ const PlayArea = () => {
 
     const imagesArray = importAll(require.context('../../public/genshin_chibi', false, /\.(webp|jpg|png|jpe?g|svg)$/));
     setImages(imagesArray);
+    return () => clearInterval(interval);
   }, []);
 
   const shuffleArray = (array: any[]) => {
@@ -48,10 +53,16 @@ const PlayArea = () => {
     const shuffledImages = shuffleArray(images);
     setImages(shuffledImages);
   }
+  const formatTime = (totalSeconds: number) => {
+    const minutes = Math.floor(totalSeconds / 60);
+    const seconds = totalSeconds % 60;
+    return `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+  };
 
   return (
     <section className='mx-10 md:mx-20'>
       <div>
+        Time: {formatTime(seconds)} <br/>
         Score: {score} <br/>
         Highscore: {highScore}
       </div>

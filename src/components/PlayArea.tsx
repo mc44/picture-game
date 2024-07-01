@@ -40,6 +40,7 @@ const PlayArea = () => {
       const shuffledImages = shuffleArray(imagesArray);
       setImages(shuffledImages);
     } else if (level == 2) {
+      setSelected([])
       const jumbleImages = jumbleArrayContents(images);
       setImages(jumbleImages);
     } else if (level == 3) {

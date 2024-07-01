@@ -114,7 +114,7 @@ const PlayArea = () => {
         Score: {score + '/24'} <br />
         Highscore: {highScore + '/24'}
       </div>
-      <div className="image-list grid grid-cols-4 md:grid-cols-6 gap-3">
+      <div className="image-list grid grid-cols-4 md:grid-cols-6 gap-3 ">
         {images.map(image => (
           <div key={image.id} className="image-item">
             <Image
@@ -124,7 +124,7 @@ const PlayArea = () => {
               width={300}
               height={300}
             />
-            <p>{image.name}</p>
+            <p className='text-xs lg:text-lg'>{image.name}</p>
           </div>
         ))}
       </div>

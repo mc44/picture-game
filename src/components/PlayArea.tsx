@@ -71,7 +71,7 @@ const PlayArea = () => {
         {images.map(image => (
           <div key={image.id} className="image-item">
             <Image
-              src={`/genshin_chibi/${image.picture}`}
+              src={`/picture-game/genshin_chibi/${image.picture}`}
               onClick={() => handleClick(image.id)}
               alt={image.name}
               width={300}

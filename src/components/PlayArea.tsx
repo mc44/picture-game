@@ -10,7 +10,7 @@ interface ImageData {
 
 const PlayArea = () => {
   const [score, setScore] = useState(0);
-  const [highScore,setHighScore] = useState(0);
+  const [highScore, setHighScore] = useState(0);
   const [images, setImages] = useState<ImageData[]>([]);
   const [selected, setSelected] = useState<number[]>([]);
   const [seconds, setSeconds] = useState<number>(0);
@@ -37,18 +37,19 @@ const PlayArea = () => {
       const j = Math.floor(Math.random() * (i + 1));
       [array[i], array[j]] = [array[j], array[i]];
     }
+    console.log(array, "TEST");
     return array;
   };
 
   const handleClick = (id: number) => {
     console.log(selected);
-    if(selected.includes(id)){
-      if(highScore<score) setHighScore(score);
+    if (selected.includes(id)) {
+      if (highScore < score) setHighScore(score);
       setScore(0);
       setSelected([]);
-    }else{
+    } else {
       setSelected(prevSelected => [...prevSelected, id]);
-      setScore(score+1);
+      setScore(score + 1);
     }
     const shuffledImages = shuffleArray(images);
     setImages(shuffledImages);
@@ -62,14 +63,14 @@ const PlayArea = () => {
   return (
     <section className='mx-10 md:mx-20'>
       <div>
-        Time: {formatTime(seconds)} <br/>
-        Score: {score+'/12'} <br/>
-        Highscore: {highScore +'/12'}
+        Time: {formatTime(seconds)} <br />
+        Score: {score + '/12'} <br />
+        Highscore: {highScore + '/12'}
       </div>
       <div className="image-list grid grid-cols-4 md:grid-cols-6 gap-3">
         {images.map(image => (
           <div key={image.id} className="image-item">
-           <Image
+            <Image
               src={`/genshin_chibi/${image.picture}`}
               onClick={() => handleClick(image.id)}
               alt={image.name}

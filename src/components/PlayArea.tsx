@@ -63,8 +63,8 @@ const PlayArea = () => {
     <section className='mx-10 md:mx-20'>
       <div>
         Time: {formatTime(seconds)} <br/>
-        Score: {score} <br/>
-        Highscore: {highScore}
+        Score: {score+'/12'} <br/>
+        Highscore: {highScore +'/12'}
       </div>
       <div className="image-list grid grid-cols-4 md:grid-cols-6 gap-3">
         {images.map(image => (
